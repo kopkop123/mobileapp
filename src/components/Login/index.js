@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import { loginStatus } from '../../actions/index';
 import { StyleSheet, Text, TextInput, Button, View, Alert } from 'react-native';
 import store from '../../store';
@@ -9,26 +8,15 @@ const Login = (props) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  console.log('prop11s', props)
   const show = () => {
     // console.log(props, login)
   }
 
   const handleLogin = () => {
-    // Alert.alert('Right button pressed');
-    // Waiting for API
-    // fetch(`https://api.themoviedb.org/3/movie/600?api_key=ab2dc1b907dfee9c3091ee52c576239e`, {
-    //   login: login,
-    //   password: password
-    // })
-    // .then((res) => res.json())
-    // .then(data => {
-    //   console.log(data)
-    // });
 
     if(login && password) {
-      props.loginStatus('LOGIN');
-      // store.dispatch(props.loginStatus('LOGIN'))
-      console.log(props)
+      props.loginStatus('LOGIN')
     }
   }
 
@@ -39,6 +27,8 @@ const Login = (props) => {
   const onChangePassword = (event) => {
     setPassword(event.target.value);
   }
+
+  console.log('store.getState', store.getState())
 
   return (
     <View style={styles.container}>
@@ -76,15 +66,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state) => {
-  console.log(state, 'werrrr')
-  return {
-    login: state.login
-  }
+const mapStateToProps = (state) => ({
+  login: state.login
+})
+
+const mapDispatchToProps = {
+  loginStatus
 }
 
-// const matchDispatchToProps = (dispatch) => {
-//   return bindActionCreators({loginStatus}, dispatch);
-// }
-
-export default connect(mapStateToProps, {loginStatus})(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,11 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { View, StyleSheet, Text, TextInput, SafeAreaView } from 'react-native';
+// import { connect } from 'react-redux';
+// import { View, StyleSheet, Text, TextInput, SafeAreaView } from 'react-native';
 import Login from '../Login';
 
 
 const Application = (props) => {
-  console.log(props,'dfffdd4444')
   return (
     <>
       <Login />
@@ -13,4 +12,4 @@ const Application = (props) => {
   );
 }
 
-export default connect()(Application);
+export default Application;
